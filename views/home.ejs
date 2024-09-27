@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header class="d-flex justify-content-between align-items-center">
+        <h2 class="">K-WD</h2>
+        <ul class="d-flex">
+            <div class="transition rounded-full outline-none theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                <div class="absolute top-0 left-0 inline-flex items-center justify-center transition-all duration-150 transform scale-110 rounded-full shadow-sm translate-x-6 text-primary-100"
+                    :class="{ 'translate-x-0 -translate-y-px bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }">
+                </div>
+                <i class="bi bi-toggle-on light-icon"></i>
+                <i class="bi bi-toggle-off dark-icon off"></i>
+            </div>
+            
+            <a href="/">Home</a>
+            <a href="/logInForm">logIn</a>
+            <a href="/profile">Profile</a>
+            <li class="m-2"><i class="bi bi-bell"></i></li>
+            <li class="m-2"><i class="bi bi-search"></i></li>
+            <li class="m-2"><i class="bi bi-gear"></i></li>
+            <li class="m-2"><%= user[0].name %></li>
+        </ul>
+    </header>
+    <aside class="sidebar" width="200px">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li class="active"><i class="bi bi-house-door"></i><a href="/" >Dashboard</a></li>
+            <li><i class="bi bi-grid"></i><a href="#">Components</a></li>
+            <li><i class="bi bi-person"></i><a href="#">Authentication</a></li>
+            <li><i class="bi bi-layout-wtf"></i><a href="#">Layouts</a></li>
+            <li><i class="bi bi-file-earmark"></i><a href="/logInForm">logIn</a></li>
+        </ul>
+    </aside>
+    <main class="main-content">
+        <h1>Welcome, <%= user[0].name %>!</h1>
+        <h1>Dashboard</h1>
+        <section class="cards col-12 ">
+            <div class="card col-3">
+                <div class="d-flex">
+                    <div class="pe-3">
+                        <h3>Value</h3>
+                        <span class="value pe-1">$30,000</span>
+                        <span class="percentage rounded-pill p-1">+4.4%</span>
+                    </div>
+                    <div>
+                        <span><i class="bi bi-coin value ps-2 fs-1"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-3">
+                <div class="d-flex">
+                    <div class="pe-3">
+                        <h3>Users</h3>
+                        <span class="value  pe-1">50,021</span>
+                        <span class="percentage rounded-pill p-1">+2.6%</span>
+                    </div>
+                    <div>
+                        <span><i class="bi bi-person-circle value ps-2 fs-1"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="d-flex">
+                    <div class="pe-3">
+                        <h3>Orders</h3>
+                        <span class="value pe-1">45,021</span>
+                        <span class="percentage rounded-pill p-1">+3.1%</span>
+                    </div>
+                    <div>
+                        <span><i class="bi bi-graph-up value ps-2 fs-2"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="d-flex">
+                    <div class="pe-3">
+                        <h3>Tickets</h3>
+                        <span class="value pe-1">20,156</span>
+                        <span class="percentage rounded-pill p-1">+3.1%</span>
+                    </div>
+                    <div>
+                        <span><i class="bi bi-ticket-perforated value ps-2 fs-1"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="charts"></section>
+        <div class="col d-flex">
+            <div class="col-7 p-3">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="col-5 p-3 ">
+                <canvas id="doughnutChart"></canvas>
+            </div>
+        </div>
+        </section>
+
+        <section>
+            <div class="col d-flex">
+                <div class="col-6 p-3" height="150px">
+                    <canvas id="myBarChart" class=""></canvas>
+                </div>
+                <div class="col-6 p-3" height="150px">
+                    <canvas id="lineChart" class=""></canvas>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
