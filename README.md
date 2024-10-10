@@ -1,69 +1,117 @@
-# My Express Admin Panel with SignUp, LogIn, and Profile 📋
 
-This project is a simple admin panel application built using Node.js, Express, Multer, Body-parser, Bootstrap, EJS, and Cookie-parser. 
-It allows users to sign up, log in, and view their profile after authentication.
+# MyBlogApp
 
-## 🚀 Features
+A simple blog application built with Node.js, Express, and MongoDB. Users can create, edit, and delete their blogs. The application also supports user authentication and profile management.
 
-- 🔐 **SignUp**: Register with a username and password.
-- 🔓 **LogIn**: Secure authentication to access your profile.
-- 🏠 **Home Page**: Landing page after logging in.
-- 📝 **Admin Panel**: Restricted area for admin functionalities.
-- 🗂️ **Multer**: For handling file uploads (e.g., profile pictures).
-- 🍪 **Cookie-parser**: Manage sessions and cookies for user authentication.
+## Table of Contents
 
-## 🛠️ Installation
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Folder Structure](#folder-structure)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
 
-To run this project locally, follow these steps:
+## Features
 
-1. Clone the repository:
+- User authentication (Signup/Login/Logout)
+- Add, edit, and delete blogs
+- View all blogs and user-specific blogs
+- Profile management with an option to upload images
+- Responsive and modern UI
+
+
+
+## Installation
+
+1. Clone the repository to your local machine:
+
     ```bash
-    git clone https://github.com/binduhareshbhaidhaduk/Mongo_Admin-Panel
+    git clone https://github.com/binduhareshbhaidhaduk/node_blogs
     ```
-2. Navigate to the project folder:
+
+2. Navigate into the project directory:
+
     ```bash
-    cd Admin-Panem
+    cd node_blogs
     ```
-3. Install dependencies:
+
+3. Install the dependencies:
+
     ```bash
     npm install
     ```
 
-## 🏃 Getting Started
+4. Set up environment variables by creating a `.env` file in the root of your project and adding the following:
 
-1. Start the server:
+    ```env
+    PORT=4000
+    MONGO_URI=binduhareshbhaidhaduk/node_mongo_blogs
+    ```
+
+5. Start the MongoDB server:
+
+    ```bash
+    mongoose
+    ```
+
+6. Run the application:
+
     ```bash
     npm start
     ```
 
-2. Open your browser and go to:
-    ```bash
-    http://localhost:9009
-    ```
+The application should now be running on `http://localhost:4000`.
 
-## ⚙️ Technologies Used
+## Usage
 
-- **Express**: For server-side routing and handling requests.
-- **Multer**: File uploads for user profile pictures.
-- **Body-parser**: Parse incoming request bodies in a middleware.
-- **Bootstrap**: For UI components and responsive design.
-- **EJS**: Templating engine for rendering dynamic HTML.
-- **Cookie-parser**: For managing user sessions with cookies.
+- Visit the homepage to view all blogs.
+- Sign up or log in to start creating your own blogs.
+- Navigate to the profile page to view and manage your blogs.
 
-## 📸 Screenshots
+## Folder Structure
 
-### 📝 Sign Up Page
-![Sign Up]![Screenshot 2024-09-20 185457](https://github.com/user-attachments/assets/807489be-5800-4050-94ea-2ef13ca16496)
+```bash
+MyBlogApp
+├── config            # Configuration files (e.g., passport config)
+├── controller        #  Controller functions for handling requests
+├── model             # Mongoose models (User, Blog)
+├── routes            # Express routes (authentication, blogs, profile)
+├── views             # EJS templates (HTML views)
+│   ├── partials      # Reusable partials (header, footer)
+│   ├── layouts       # Layouts (base layout)
+│   └── pages         # Page-specific templates (index, profile)
+│   ├── css           # CSS files
+├── .env              # Environment variables (Not included in version control)
+├── .gitignore        # Git ignore file
+├── index.js          # Entry point of the application
+├── README.md         # Project documentation
+└── package.json      # Project metadata and dependencies
+```
 
-### 🔓 Log In Page
-![Log In]![Screenshot 2024-09-20 185436](https://github.com/user-attachments/assets/48458cf7-f210-4782-9ef1-83fa8d97e2e2)
+## Technologies Used
 
-### 🏠 Home Page
-![Home]![Screenshot 2024-09-20 185641](https://github.com/user-attachments/assets/c4b1d9ff-eb7e-4503-b483-41886abdd066)
+- **Frontend:**
+  - Bootstrap 5.3
+  - EJS (Embedded JavaScript)
+  - Custom CSS for styling
+  - Bootstrap Icons
+
+- **Backend:**
+  - Node.js
+  - Express.js
+  - MongoDB & Mongoose
+  - Passport.js (Authentication)
+  - Multer (File uploads)
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
 
 
-## 🚧 TODOs / Future Enhancements
-
-- 🌗 Implement dark/light theme toggle for better user experience.
-- 🔒 Enhance security with password hashing.
-- 📂 Add more admin functionalities (e.g., user management).
