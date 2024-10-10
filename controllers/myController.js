@@ -1,23 +1,25 @@
-const fs = require('fs');
-const path = require('path');
-const signUp = require('../model/signUp-model')
+const userModel = require('../model/signUp-model')
+const Blog = require('../model/blog-Model');
+
 
 const defaultCon = async (req, res) => {
-    if (req.cookies.userid) {
-            let user = await signUp.find();
+    const user = await userModel.findOne();
+    console.log(userModel.Users, 'user model')
+    if (req.isAuthenticated()) {
+    console.log(user, 'user in home')
+    const blogs = await Blog.find().populate('author', 'username'); // Populate author username
 
-            if (user) {
-                res.render('home', { user });
-            } else {
-                console.log('User not found');
-                res.status(404).send('User not found');
-            }
+        // Passport adds the authenticated user to req.user
+        res.render('home', { user: req.user,blogs });
     } else {
         res.redirect('/logInForm');
+        console.log('form')
     }
 };
+
+
 const profileCon = async (req, res) => {
-    let user = await signUp.findOne();
+    let user = await userModel.findOne();
     console.log('User found:', user);
     res.render('profile', { user });
 

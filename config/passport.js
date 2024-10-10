@@ -7,22 +7,12 @@ passport.use(new LocalStrategy({ usernameField: 'email' },
     async function (email, password, done) {
         try {
             // Find user by email
-            const user = await userModel.findOne({ username: email });
-            console.log(user, 'user')
+            const user = await userModel.findOne({ email: email });
+            console.log(user, 'user login');
 
-            if (user) {
-                bcrypt.compare(req.body.password, user.password, (err, r) => {
-                    if (!err) {
-                        // Password matches
-                        res.redirect('/');
-                    } else {
-                        res.redirect('/logInForm')
-                    }
-
-                })
-            } else {
-                // Password doesn't match or user not found
-                res.render('logIn', { error: 'Invalid username or password' });
+            if (!user) {
+                // User not found
+                return done(null, false, { message: 'Invalid username or password' });
             }
 
             // Compare passwords
@@ -31,6 +21,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' },
                 return done(null, false, { message: 'Incorrect password.' });
             }
 
+            // Authentication successful
             return done(null, user);
         } catch (err) {
             return done(err);
